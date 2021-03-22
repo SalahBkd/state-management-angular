@@ -1,0 +1,31 @@
+<div class="container mt-5" *ngIf="formProductGroup">
+  <form [formGroup]="formProductGroup">
+    <div class="form-group">
+      <label for="name">Name: </label>
+      <input type="text" id="name" class="form-control" formControlName="name"
+      [class]="{'is-invalide': submitted && formProductGroup.controls.name.errors}">
+      <div *ngIf="submitted && formProductGroup.controls.name.errors" class="invalide-feedback">
+        <div *ngIf="formProductGroup.controls.name.errors.required">Name is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="price">Price: </label>
+      <input type="number" id="price" class="form-control" formControlName="price">
+    </div>
+    <div class="form-group">
+      <label for="quantity">Quantity: </label>
+      <input type="number" id="quantity" class="form-control" formControlName="quantity">
+    </div>
+    <div class="form-group">
+      <label class="form-check-label" for="selected" style="margin-right: 30px">Selected: </label>
+      <input type="checkbox" class="form-check-input" id="selected" formControlName="selected">
+    </div>
+    <div class="form-group">
+      <label class="form-check-label" for="available" style="margin-right: 30px">Available: </label>
+      <input type="checkbox" class="form-check-input" id="available" formControlName="available">
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success" (click)="onSaveProduct(formProductGroup.value)">Save</button>
+    </div>
+  </form>
+</div>

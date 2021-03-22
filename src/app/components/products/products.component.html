@@ -1,0 +1,70 @@
+<nav class="navbar navbar-light bg-light">
+  <form class="form-inline">
+    <button (click)="onGetAllProducts()" class="btn btn-outline-info m-2" type="button">All</button>
+    <button (click)="onGetSelectedProducts()" class="btn btn-outline-info m-2" type="button">Selected</button>
+    <button (click)="onGetAvailableProducts()" class="btn btn-outline-info m-2" type="button">Available</button>
+    <form class="form-inline my-2 my-lg-0"  #f="ngForm" (ngSubmit)="onSearchProducts(f.value)">
+      <input ngModel name="keyword" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search Products</button>
+    </form>
+    <button (click)="onAddProduct()" class="btn btn-outline-info m-2" type="button">Add</button>
+  </form>
+</nav>
+<div class="container">
+  <ng-container *ngIf="(products$ | async) as result" [ngSwitch]="result.dataState">
+    <ng-container *ngSwitchCase='dataStateEnum.LOADING'>
+      Loading...
+    </ng-container>
+    <ng-container *ngSwitchCase="dataStateEnum.ERROR">
+      <div class="alert-danger">
+        {{result.errorMessage}}
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="dataStateEnum.LOADED">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Product ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Selected</th>
+          <th scope="col">Available</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of result.data">
+          <th scope="row">{{product.id}}</th>
+          <td>{{product.name}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.quantity}}</td>
+          <td>{{product.selected}}</td>
+          <td>{{product.available}}</td>
+          <td>
+            <button class="btn btn-sm btn-success"
+                    (click)="onProductSelect(product)"
+                    [ngClass]="product.selected ? 'btn btn-sm btn-success' : 'btn btn-sm btn-danger'">
+              <span *ngIf="product.selected">Unselect</span>
+              <span *ngIf="!product.selected">Select</span>
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-success" (click)="onProductUpdate(product)">
+              <span class="fa fa-edit"></span>
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="onProductDelete(product)">
+              <span class="fa fa-trash-o"></span>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </ng-container>
+  </ng-container>
+</div>
+
+
+
+
