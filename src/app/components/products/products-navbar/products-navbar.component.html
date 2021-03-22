@@ -1,0 +1,12 @@
+<nav class="navbar navbar-light bg-light">
+  <form class="form-inline">
+    <button (click)="onGetAllProducts()" class="btn btn-outline-info m-2" type="button">All</button>
+    <button (click)="onGetSelectedProducts()" class="btn btn-outline-info m-2" type="button">Selected</button>
+    <button (click)="onGetAvailableProducts()" class="btn btn-outline-info m-2" type="button">Available</button>
+    <form class="form-inline my-2 my-lg-0"  #f="ngForm" (ngSubmit)="onSearchProducts(f.value)">
+      <input ngModel name="keyword" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search Products</button>
+    </form>
+    <button (click)="onAddProduct()" class="btn btn-outline-info m-2" type="button">Add</button>
+  </form>
+</nav>
