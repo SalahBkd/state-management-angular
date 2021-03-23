@@ -23,7 +23,6 @@
         <tbody>
         <app-product-item [product]="product"
                           *ngFor="let product of result.data"
-                          (productEventEmitter)="onActionEvent($event)"
                           style="display: contents">
         </app-product-item>
         </tbody>

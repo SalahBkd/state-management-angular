@@ -5,7 +5,7 @@
       "name": "Computer Updated",
       "price": 4435,
       "quantity": 69,
-      "selected": true,
+      "selected": false,
       "available": true
     },
     {
@@ -15,22 +15,6 @@
       "quantity": 23,
       "selected": true,
       "available": true
-    },
-    {
-      "id": 3,
-      "name": "Camera",
-      "price": 324,
-      "quantity": 34,
-      "selected": false,
-      "available": true
-    },
-    {
-      "name": "Lenovo",
-      "price": 13,
-      "quantity": 42,
-      "selected": false,
-      "available": true,
-      "id": 4
     }
   ]
 }
