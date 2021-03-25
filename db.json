@@ -22,14 +22,14 @@
       "price": 324,
       "quantity": 34,
       "selected": false,
-      "available": true
+      "available": false
     },
     {
       "name": "Lenovo",
       "price": 13,
       "quantity": 42,
       "selected": false,
-      "available": true,
+      "available": false,
       "id": 4
     }
   ]

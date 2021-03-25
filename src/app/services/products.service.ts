@@ -23,40 +23,4 @@ export class ProductsService {
     return this.http.get(apiUrl + '/products?selected=true');
   }
 
-  getAvailableProducts(): Observable<any> {
-    let apiUrl = environment.apiUrl;
-    return this.http.get(apiUrl + '/products?available=true');
-  }
-
-  searchProducts(keyword: string): Observable<any> {
-    let apiUrl = environment.apiUrl;
-    return this.http.get(apiUrl + '/products?name_like=' + keyword);
-  }
-
-  selectProduct(product: Product): Observable<any> {
-    let apiUrl = environment.apiUrl;
-    product.selected = !product.selected;
-    return this.http.put<any>(apiUrl + '/products/' + product.id, product);
-  }
-
-  deleteProduct(product: Product): Observable<any> {
-    let apiUrl = environment.apiUrl;
-    return this.http.delete<any>(apiUrl + '/products/' + product.id);
-  }
-
-  addProduct(product: Product): Observable<any> {
-    let apiUrl = environment.apiUrl;
-    return this.http.post<any>(apiUrl + '/products', product);
-  }
-
-  getProduct(productId: number): Observable<any> {
-    let apiUrl = environment.apiUrl;
-    return this.http.get<any>(apiUrl + '/products/' + productId);
-  }
-
-  updateProduct(product: Product): Observable<any> {
-    let apiUrl = environment.apiUrl;
-    return this.http.put<any>(apiUrl + '/products/' + product.id, product);
-  }
-
 }

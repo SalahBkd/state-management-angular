@@ -1,5 +1,17 @@
-<app-products-navbar (productEventEmitter)="onActionEvent($event)"></app-products-navbar>
-<app-products-list [productsInput$]="products$" (productEventEmitter)="onActionEvent($event)"></app-products-list>
+<app-products-navbar></app-products-navbar>
+<ng-container *ngIf="productsState$ | async as state" [ngSwitch]="state.dataState">
+  <ng-container *ngSwitchCase="ProductsStateEnum.LOADING">
+    Loading...
+  </ng-container>
+  <ng-container *ngSwitchCase="ProductsStateEnum.ERROR">
+    <div class="alert-danger">{{state.errorMessage}}</div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="ProductsStateEnum.LOADED">
+    {{state.products | json}}
+  </ng-container>
+</ng-container>
+<!--<app-products-list></app-products-list>-->
 
 
 
